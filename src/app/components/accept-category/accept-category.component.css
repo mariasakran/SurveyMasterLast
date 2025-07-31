@@ -1,0 +1,211 @@
+/* Category Management Page - Consistent Dark Blue/Teal Theme */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0a192f; /* Dark blue background */
+    color: white;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #303f60;
+}
+
+.header h1 {
+    color: #64ffda; /* Teal accent */
+    margin: 0 0 20px 0;
+    font-size: 2rem;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #64ffda;
+    color: #0a192f;
+}
+
+.btn-primary:hover {
+    background-color: #52e8d1;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
+}
+
+.search-box {
+    display: flex;
+    background-color: #172a45;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #303f60;
+    max-width: 400px;
+    flex: 1;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 10px 15px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+}
+
+.search-box input:focus {
+    outline: none;
+}
+
+.search-btn {
+    background-color: #64ffda;
+    color: #0a192f;
+    border: none;
+    padding: 0 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #52e8d1;
+}
+
+.category-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.category-card {
+    background-color: #172a45; /* Slightly lighter blue */
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid #303f60;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border-color: #64ffda;
+}
+
+.category-info h3 {
+    color: white;
+    margin: 0 0 10px 0;
+    font-size: 1.3rem;
+}
+
+.category-description {
+    color: #8892b0; /* Light gray-blue */
+    margin: 0 0 15px 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.category-status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.category-status.active {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: #64ffda;
+    border: 1px solid #64ffda;
+}
+
+.category-status.inactive {
+    background-color: rgba(255, 107, 107, 0.1);
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+}
+
+.category-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: flex-end;
+}
+
+.btn-edit {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: #64ffda;
+    border: 1px solid #64ffda;
+}
+
+.btn-edit:hover {
+    background-color: rgba(100, 255, 218, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-delete {
+    background-color: rgba(255, 107, 107, 0.1);
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+}
+
+.btn-delete:hover {
+    background-color: rgba(255, 107, 107, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-box {
+        max-width: 100%;
+    }
+    
+    .category-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-actions {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content:center;
+}
+}

@@ -1,0 +1,139 @@
+<body>
+  <div class="container mt-4">
+    <button class="btn btn-outline-secondary mb-3" routerLink="/home">
+      <i class="bi bi-arrow-left"></i> Back to Home
+    </button>
+
+    <div *ngIf="survey">
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h3>{{ survey.name }}</h3>
+        </div>
+        <div class="card-body">
+          <p class="lead">{{ survey.description || 'No description provided' }}</p>
+          <p class="lead">Question {{ currentQuestionIndex + 1 }} of {{ survey.questions.length }}</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header bg-light">
+          <h4>Question {{ currentQuestionIndex + 1 }}</h4>
+        </div>
+        <div class="card-body">
+          <div *ngIf="currentQuestion" class="mb-4 p-3 border rounded">
+            <h5>{{ currentQuestion.text }}</h5>
+
+            <div *ngIf="currentQuestion.answerOptions?.length > 0">
+
+              <div *ngIf="currentQuestion.questionType === 'checkbox'" class="card shadow-sm mb-4">
+                <div class="card-body" *ngIf="totalResponse!=0">
+                  <h5 class="card-title text-primary mb-4">{{ currentQuestion.questionText }}</h5>
+
+                  <div class="results-container">
+                    <div *ngFor="let option of currentQuestion.answerOptions; let i = index" class="result-item mb-3">
+                      <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span class="option-text font-weight-medium">{{ option.text }}</span>
+                        <span class="percentage-badge badge bg-light text-white">{{ currentQuestion.questionResult[i]
+                          /totalResponse*100}}%</span>
+                      </div>
+
+                      <div class="progress" style="height: 10px;">
+                        <div class="progress-bar bg-gradient-primary" role="progressbar"
+                          [style.width]="currentQuestion.questionResult[i]/totalResponse*100 + '%'"
+                          [attr.aria-valuenow]="currentQuestion.questionResult[i]/totalResponse*100" aria-valuemin="0"
+                          aria-valuemax="100">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="total-responses mt-3 text-muted small">
+                    <i class="fas fa-users me-1"></i> Total responses: {{totalResponse}}
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="currentQuestion.questionType === 'radio'" class="form-check">
+                <div class="card-body" *ngIf="totalResponse!=0">
+                  <h5 class="card-title text-primary mb-4">{{ currentQuestion.questionText }}</h5>
+
+                  <div class="results-container">
+                    <div *ngFor="let option of currentQuestion.answerOptions; let i = index" class="result-item mb-3">
+                      <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span class="option-text font-weight-medium">{{ option.text }}</span>
+                        <span class="percentage-badge badge bg-light text-white">{{ currentQuestion.questionResult[i]
+                          /totalResponse*100}}%</span>
+                      </div>
+
+                      <div class="progress" style="height: 10px;">
+                        <div class="progress-bar bg-gradient-primary" role="progressbar"
+                          [style.width]="currentQuestion.questionResult[i]/totalResponse*100 + '%'"
+                          [attr.aria-valuenow]="currentQuestion.questionResult[i]/totalResponse*100" aria-valuemin="0"
+                          aria-valuemax="100">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="total-responses mt-3 text-muted small">
+                    <i class="fas fa-users me-1"></i> Total responses: {{totalResponse}}
+                  </div>
+                </div>
+
+              </div>
+
+
+            </div>
+
+            <div *ngIf="currentQuestion.questionType === 'text'" class=" alert-info">
+              <div class="cards">
+
+                <h5 class="carde ">
+                  <i class="fas fa-comment-alt me-2"></i>{{ currentQuestion.text }}
+                </h5>
+
+                <div class="total-responses mb-3">
+                  <span>
+                    <i class="fas fa-reply me-1"></i> {{ currentQuestion.questionStringResult.length }} responses
+                  </span>
+                </div>
+
+                <div class="responses-container">
+                  <div *ngFor="let response of currentQuestion.questionStringResult; let i = index"
+                    class="response-card mb-3 p-3 bg-light rounded">
+                    <div class="d-flex align-items-start">
+                      <div class="response-number me-3">
+                        <span>{{ i + 1 }}</span>
+                      </div>
+                      <div class="response-text">
+                        <p class="mb-0">{{response}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div *ngIf="currentQuestion.questionResult.length === 0" class="empty-state text-center py-4">
+                    <i class="fas fa-inbox fa-2x text-muted mb-2"></i>
+                    <p class="text-muted">No responses yet</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between mt-4">
+            <button class="btn btn-secondary" (click)="previousQuestion()" [disabled]="currentQuestionIndex === 0">
+              Previous
+            </button>
+            <button class="btn btn-primary" (click)="nextQuestion()"
+              [disabled]="currentQuestionIndex === survey.questions.length - 1">
+              Next
+            </button>
+            <button *ngIf="currentQuestionIndex === survey.questions.length - 1" class="btn btn-success">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

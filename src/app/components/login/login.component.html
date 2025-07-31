@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-section"></div>
+        <div class="login-container">
+            <h2 class="login-header">Login</h2>
+            <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" [(ngModel)]="username" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" [(ngModel)]="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+                <p *ngIf="registrationFaild" class="faild-message">Login Failed!</p>
+            </form>
+            <p class="text-center mt-3">
+                <a routerLink="/register">Create an account</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

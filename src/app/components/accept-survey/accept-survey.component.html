@@ -1,0 +1,36 @@
+<body>
+    <app-sidebar></app-sidebar>
+    <div class="survey-management-container">
+        <h2>Accept survey</h2>
+
+
+
+        <div class="survey-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Description</th>
+
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let survey of surveys">
+                        <td>{{ survey.userId }}</td>
+                        <td>{{ survey.title }}</td>
+                        <td>{{ survey.description }}</td>
+
+                        <td class="actions">
+                            <button class="btn btn-edit" (click)="showDetails(survey.id)">
+                                <span class="material-symbols-outlined">edit</span> Show Details
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>

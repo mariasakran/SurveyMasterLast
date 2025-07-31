@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Categories</title>
+</head>
+
+<body>
+    <app-sidebar></app-sidebar>
+
+    <div class="content">
+        <div class="favorites-container">
+            <header class="favorites-header">
+                <h1 class="favorites-title">
+                    <span class="material-symbols-outlined">favorite</span>
+                    Select Favorite Categories
+                </h1>
+                <div *ngIf="added" class="success-message">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    Added successfully!
+                </div>
+            </header>
+
+            <div *ngIf="loading" class="categories-list">
+                <div class="category-card" *ngFor="let category of categories">
+                    <div class="category-info">
+                        <h3>{{ category.type }}</h3>
+                    </div>
+                    <button class="favorite-btn" (click)="addfavorite(category.type)">
+                        <span class="material-symbols-outlined">favorite</span>
+                        Add to Favorites
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

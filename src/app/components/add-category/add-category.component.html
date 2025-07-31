@@ -1,0 +1,24 @@
+<body>
+  <div class="container">
+    <h2>Add New Category</h2>
+    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+
+      <label for="type">Category Name:</label>
+      <input id="type" formControlName="type" />
+      <div *ngIf="categoryForm.get('type')?.invalid && categoryForm.get('type')?.touched">
+        Name is required.
+      </div>
+
+
+
+      <button type="submit" [disabled]="categoryForm.invalid">Add Category</button>
+      <button type="submit" routerLink="/categorymange">Back To List</button>
+
+
+    </form>
+
+
+    <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+  </div>
+
+</body>

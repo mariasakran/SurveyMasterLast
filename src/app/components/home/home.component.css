@@ -1,0 +1,10 @@
+body {
+    background-color: #0A192F;
+    overflow: hidden;
+}
+
+.content {
+    margin-left: 270px;
+    padding: 20px;
+    overflow: hidden;
+}

@@ -1,0 +1,46 @@
+<app-sidebar></app-sidebar>
+
+<body>
+  <div class="content">
+    <div class="container mt-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>my Surveys</h2>
+
+      </div>
+
+
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+
+      <div *ngIf="surveys.length === 0" class="alert alert-info">
+        No surveys available. Create your first survey!
+      </div>
+
+      <div class="row">
+        <div *ngFor="let survey of surveys" class="col-md-6 mb-4">
+          <div class="card h-100">
+            <div class="card-header">
+              <h5 class="card-title">{{ survey.title }}</h5>
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{ survey.description || 'No description provided' }}</p>
+              <p class="text-muted">
+                <small>{{ survey.questions?.length || 0 }} questions</small>
+              </p>
+            </div>
+            <div class="card-footer bg-transparent">
+              <button class="btn btn-outline-primary" *ngIf="survey.finished==false" (click)="finishSurvey(survey.id)">
+                Finish
+              </button>
+              <button class="btn btn-outline-primary" *ngIf="survey.finished==true"
+                (click)="viewSurveyResult(survey.id)">
+                View Result
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

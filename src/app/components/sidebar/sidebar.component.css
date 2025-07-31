@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: #172a45;
+    width: 250px;
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar p {
+    color: #64ffda;
+    padding: 20px;
+    font-size: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #303f60;
+    margin: 0;
+}
+
+.menu-content {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-content li {
+    position: relative;
+    border-bottom: 1px solid #303f60;
+    transition: all 0.3s ease;
+}
+
+.menu-content li:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+}
+
+.menu-content li a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.menu-content li a:hover {
+    color: #64ffda;
+}
+
+.menu-content li a span:first-child {
+    margin-right: 15px;
+    font-size: 1.2rem;
+    color: #64ffda;
+}
+
+.menu-content li a span:last-child {
+    flex: 1;
+}
+
+/* Active Link Style */
+.menu-content li a.active {
+    background-color: rgba(100, 255, 218, 0.2);
+    color: #64ffda;
+}
+
+/* Material Icons */
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        position: relative;
+    }
+    
+    .menu-content {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .menu-content li {
+        flex: 1 0 50%;
+        text-align: center;
+    }
+    
+    .menu-content li a {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .menu-content li a span:first-child {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-content li {
+        flex: 1 0 100%;
+    }
+}

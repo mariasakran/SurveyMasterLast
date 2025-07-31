@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Menu</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="menu" *ngIf="loading==true">
+            
+            <p>welcome  {{userDetails.username}} to SurveyMaster</p>
+            <ul class="menu-content">
+                <li><a routerLink="/home"><span class="material-symbols-outlined">home</span><span>Home</span></a></li>
+                <li><a routerLink="/profile"><span class="material-symbols-outlined">person</span><span>Account</span></a></li>
+                <li *ngIf="userDetails.role=='Admin'"><a routerLink="/usermange"><span class="material-symbols-outlined">edit</span><span>User Mangement</span></a></li>
+                <li *ngIf="userDetails.role=='Admin'"><a routerLink="/categorymange" ><span class="material-symbols-outlined">edit</span><span>Category Mangement</span></a></li>
+                <li *ngIf="userDetails.role=='Admin'"><a routerLink="/acceptsurvey"><span class="material-symbols-outlined">edit</span><span>Accept Survey</span></a></li>
+                <li *ngIf="userDetails.role=='Admin'"><a routerLink="/acceptCategory"><span class="material-symbols-outlined">edit</span><span>Accept Category</span></a></li>
+
+                <li *ngIf="userDetails.role=='Subscriber'||userDetails.role=='Admin' "><a routerLink="/addsurvey"><span class="material-symbols-outlined">add</span><span>Add Survey</span></a></li>
+                <li *ngIf="userDetails.role=='User'"><a routerLink="/payment"><span class="material-symbols-outlined">attach_money</span><span>Subscribe</span></a></li>
+                <li *ngIf="userDetails.role=='Subscriber'"><a routerLink="/addcategory"><span class="material-symbols-outlined">add</span><span>Add category</span></a></li>
+                <li *ngIf="userDetails.role=='Subscriber'"><a routerLink="/mySurvey"><span class="material-symbols-outlined">add</span><span>My surveys</span></a></li>
+
+                 <li *ngIf="userDetails.role=='Subscriber'"><a routerLink="/notification"><span class="material-symbols-outlined">notifications_active</span><span>my Notifications</span></a></li>
+                <li *ngIf="userDetails.role!='Admin'"><a routerLink="/favorite"><span class="material-symbols-outlined">star</span><span>favorite</span></a></li>
+
+                <li><a routerLink="/Main"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+
+</body>
+</html>

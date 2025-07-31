@@ -1,0 +1,111 @@
+/* Form Container */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0a192f; /* Dark blue background */
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.container {
+    max-width: 600px;
+    padding: 2rem;
+    background-color: #172a45; /* Medium navy blue */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid #303f60; /* Light gray-blue */
+}
+
+.container h2 {
+    color: #64ffda; /* Teal */
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #303f60;
+}
+
+/* Form Elements */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+label {
+    color: #e6f1ff; /* Light white */
+    font-weight: 500;
+    margin-bottom: -1rem; /* Adjust spacing */
+}
+
+input {
+    background-color: #0a192f; /* Dark navy */
+    border: 1px solid #303f60;
+    color: #ffffff;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #64ffda;
+    box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.2);
+}
+
+/* Validation Messages */
+div[ngIf] {
+    color: #ff6b6b; /* Error red */
+    font-size: 0.875rem;
+    margin-top: -1rem; /* Adjust spacing */
+}
+
+/* Submit Button */
+button[type="submit"] {
+    background-color: #64ffda; /* Teal */
+    color: #0a192f; /* Dark navy */
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start; /* Left-align button */
+}
+
+button[type="submit"]:hover {
+    background-color: #52e8d1; /* Lighter teal */
+    transform: translateY(-2px);
+}
+
+button[type="submit"]:disabled {
+    background-color: #303f60;
+    color: #8892b0;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Success Message */
+.success {
+    color: #64ffda;
+    background-color: rgba(100, 255, 218, 0.1);
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    margin-top: 1.5rem;
+    border-left: 3px solid #64ffda;
+    display: inline-block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    button[type="submit"] {
+        width: 100%;
+    }
+}

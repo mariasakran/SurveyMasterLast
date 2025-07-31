@@ -1,0 +1,48 @@
+<body>
+  <div class="container">
+    <div class="card">
+      <h2 class="text-center">Add New User</h2>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <!-- Username Field -->
+        <label>Username:</label>
+        <input type="text" formControlName="username" />
+        <div *ngIf="username?.invalid && username?.touched">
+          <small *ngIf="username?.errors?.['required']">Username is required.</small>
+          <small *ngIf="username?.errors?.['minlength']">Username must be at least 5 characters.</small>
+        </div>
+
+        <!-- Email Field -->
+        <label>Email:</label>
+        <input type="email" formControlName="email" />
+        <div *ngIf="email?.invalid && email?.touched">
+          <small *ngIf="email?.errors?.['required']">Email is required.</small>
+          <small *ngIf="email?.errors?.['email']">Invalid email format.</small>
+        </div>
+
+        <!-- Password Field -->
+        <label>Password:</label>
+        <input type="password" formControlName="password" />
+        <div *ngIf="password?.invalid && password?.touched">
+          <small *ngIf="password?.errors?.['required']">Password is required.</small>
+          <small *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters.</small>
+        </div>
+
+        <!-- Role Field (Select Dropdown) -->
+        <label>Role:</label>
+        <select formControlName="role">
+          <option value="">Select a role</option>
+          <option value="Admin">Admin</option>
+          <option value="User">User</option>
+          <option value="Subscriber">Subscriber</option>
+        </select>
+        <div *ngIf="role?.invalid && role?.touched">
+          <small *ngIf="role?.errors?.['required']">Role is required.</small>
+        </div>
+        <button type="submit" [disabled]="registerForm.invalid">Add User</button>
+        <button type="submit" routerLink="/usermange">Back to List</button>
+        <p *ngIf="addSuccess" class="success-message">Successful! adding user</p>
+        <p *ngIf="addFaild" class="faild-message">adding user failed!</p>
+      </form>
+    </div>
+  </div>
+</body>

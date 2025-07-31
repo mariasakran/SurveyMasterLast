@@ -1,0 +1,44 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1> Accept Category</h1>
+            <div class="actions">
+                <button class="btn btn-primary" routerLink="/home">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </button>
+                <div class="search-box">
+                    <input type="text" placeholder="Search categories...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </header>
+
+        <main class="category-list">
+            <div class="category-card" *ngFor="let Category of categories">
+                <div class="category-info">
+                    <h3>{{Category.type}}</h3>
+                    <p class="category-description">Devices, gadgets, and electronic components</p>
+                </div>
+                <div class="category-actions">
+                    <button class="btn btn-edit" (click)="acceptCategory(Category.id)"><i
+                            class="fas fa-plus-circle"></i> Accept</button>
+                    <button class="btn btn-delete" (click)="declineCategory(Category.id)"><i class="fas fa-trash"></i>
+                        Decline</button>
+                </div>
+            </div>
+
+
+
+        </main>
+
+    </div>
+
+
+</body>

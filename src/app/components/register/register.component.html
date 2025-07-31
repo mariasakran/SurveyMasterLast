@@ -1,0 +1,43 @@
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-content">
+        <!-- Image Section -->
+        <div class="image-section">
+        </div>
+
+        <!-- Form Section -->
+        <div class="form-section">
+          <h2 class="text-center">Register</h2>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <label>Username:</label>
+            <input type="text" formControlName="username" />
+            <div *ngIf="username?.invalid && username?.touched">
+              <small *ngIf="username?.errors?.['required']">Username is required.</small>
+              <small *ngIf="username?.errors?.['minlength']">Username must be at least 5 characters.</small>
+            </div>
+
+            <label>Email:</label>
+            <input type="email" formControlName="email" />
+            <div *ngIf="email?.invalid && email?.touched">
+              <small *ngIf="email?.errors?.['required']">Email is required.</small>
+              <small *ngIf="email?.errors?.['email']">Invalid email format.</small>
+            </div>
+
+            <label>Password:</label>
+            <input type="password" formControlName="password" />
+            <div *ngIf="password?.invalid && password?.touched">
+              <small *ngIf="password?.errors?.['required']">Password is required.</small>
+              <small *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters.</small>
+            </div>
+
+            <button type="submit" [disabled]="registerForm.invalid">Register</button>
+            <p *ngIf="registrationSuccess" class="success-message"> successful! Redirecting to Login..</p>
+            <p *ngIf="registrationFaild" class="faild-message">Registration failed! </p>
+            <a routerLink="/login">Already have an account?</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
