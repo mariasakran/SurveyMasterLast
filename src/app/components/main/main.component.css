@@ -17,8 +17,8 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)), 
-                url('C:/Users/User/SurveyMasterLast/src/assets/ppreka.jpg');
+    background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)) 
+               ;
     background-size: cover;
     background-position: center;
     padding: 100px 0;

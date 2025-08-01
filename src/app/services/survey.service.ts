@@ -59,15 +59,18 @@ return this.http.get<any[]>(`${this.apiUrl}/findByUserId/${userId}`);
 
        });
     }
-   addRadioResult(questionId : number,index:number|any):Observable<any> {
-return this.http.put(`${this.apiUrl}/radioResult/${questionId}/${index}`,{});
+   addRadioResult(questionId : number,index:number|any ,surveyId:number,userId:number):Observable<any> {
+return this.http.put(`${this.apiUrl}/radioResult/${questionId}/${index}/${surveyId}/${userId}`,{});
    }
-   addStringResult(questionId:number,answer:String|any):Observable<any> {
-    return this.http.put(`${this.apiUrl}/textResult/${questionId}`,answer);
+   addStringResult(questionId:number,answer:String|any,surveyId:number,userId:number):Observable<any> {
+    return this.http.put(`${this.apiUrl}/textResult/${questionId}/${surveyId}/${userId}`,answer);
    }
-   addaddChickBoxResult(questionId:number,indexes:any):Observable<any> {
-        return this.http.put(`${this.apiUrl}/checkBoxResult/${questionId}`,indexes);
+   addaddChickBoxResult(questionId:number,indexes:any,surveyId:number,userId:number):Observable<any> {
+        return this.http.put(`${this.apiUrl}/checkBoxResult/${questionId}/${surveyId}/${userId}`,indexes);
 
+   }
+   addVoter(surveyId:number ,userId:number):Observable<any>{
+    return this.http.put(`${this.apiUrl}/addVoter/${surveyId}/${userId}`,{});
    }
    
 }

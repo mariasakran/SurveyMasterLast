@@ -11,13 +11,22 @@
 
     <div *ngIf="survey">
       <div class="card mb-4">
-        <div class="card-header bg-primary text-white">
-          <h3>{{ survey.name }}</h3>
+            <div class="card-header bg-light">
+          <h4>Title</h4>
         </div>
         <div class="card-body">
+          <h3>{{ survey.title }}</h3>
+        </div>
+      </div>
+            <div class="card mb-4">
+            <div class="card-header bg-light">
+          <h4>Description</h4>
+        </div>
+           <div class="card-body">
           <p class="lead">{{ survey.description || 'No description provided' }}</p>
         </div>
       </div>
+      
 
       <div class="card">
         <div class="card-header bg-light">

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrl: './accept-survey.component.css'
 })
 export class AcceptSurveyComponent implements OnInit {
+   user = JSON.parse(localStorage.getItem('user') || '{}');  
 surveys: any[] = [];
  
   constructor(

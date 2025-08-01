@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray ,AbstractControl, ValidatorFn} from '@angular/forms';
 import { Router } from '@angular/router';
 import { CategoryService } from '../../services/category.service';
 import { SurveyService } from '../../services/survey.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-survey',
@@ -11,9 +12,12 @@ import { SurveyService } from '../../services/survey.service';
   styleUrl: './add-survey.component.css'
 })
 export class AddSurveyComponent implements OnInit {
-   user = JSON.parse(localStorage.getItem('user') || '{}');   maxQuestions=10;
+   user = JSON.parse(localStorage.getItem('user') || '{}');  
+   maxQuestions=10;
   maxOptions=5;
   surveyForm: FormGroup;
+  addDone=false;
+  addFaild=false;
   questionTypes = [
    
     { value: 'text', display: 'Text' },
@@ -26,7 +30,8 @@ export class AddSurveyComponent implements OnInit {
     private fb: FormBuilder,
     private surveyService: SurveyService,
     private router: Router,
-    private categoryService:CategoryService
+    private categoryService:CategoryService,
+    private toastr: ToastrService
   ) {
     this.surveyForm = this.fb.group({
       title: ['', Validators.required],
@@ -45,14 +50,18 @@ export class AddSurveyComponent implements OnInit {
   
         
   }
+  
 
-  createQuestion(): FormGroup {
-    return this.fb.group({
-      text: ['', Validators.required],
-      questionType: ['multiple-choice', Validators.required],
-      answerOptions: this.fb.array([this.createAnswerOption()])
-    });
-  }
+createQuestion(): FormGroup {
+  const questionGroup = this.fb.group({
+    text: ['', Validators.required],
+    questionType: ['', Validators.required],
+    answerOptions: this.fb.array([this.createAnswerOption()])
+  }, { validators: answerOptionsRequiredValidator() }); 
+
+  return questionGroup;
+}
+
 
   createAnswerOption(): FormGroup {
     return this.fb.group({
@@ -93,34 +102,40 @@ addAnswerOption(questionIndex: number): void {
     this.getAnswerOptions(questionIndex).removeAt(answerIndex);
   }
 
-  onQuestionTypeChange(questionIndex: number): void {
-    const question = this.questions.at(questionIndex);
-    const answerOptions = question.get('answerOptions') as FormArray;
-    const questionType = question.get('questionType')?.value;
+onQuestionTypeChange(questionIndex: number): void {
+  const question = this.questions.at(questionIndex);
+  const answerOptions = question.get('answerOptions') as FormArray;
+  const questionType = question.get('questionType')?.value;
 
-    if (questionType === 'text') {
-      // Clear all answer options for text questions
-      while (answerOptions.length !== 0) {
-        answerOptions.removeAt(0);
-      }
-    } else if (answerOptions.length === 0) {
-      // Add at least one answer option for other types
-      answerOptions.push(this.createAnswerOption());
+  if (questionType === 'text') {
+    // Remove all answer options
+    while (answerOptions.length !== 0) {
+      answerOptions.removeAt(0);
     }
+  } else if (answerOptions.length === 0) {
+    // Add at least one blank option if switching to checkbox/radio
+    answerOptions.push(this.createAnswerOption());
   }
+
+  // Force re-validation
+  question.updateValueAndValidity();
+}
+
+
+
 
   onSubmit(): void {
     if (this.surveyForm.valid) {
       this.surveyService.createSurvey(this.surveyForm.value).subscribe({
 
         next: () => {
-        console.log(this.user.id);
-          alert('Survey created successfully!');
-          this.router.navigate(['/surveys']);
+        this.addDone=true;
+           setTimeout(() => {
+          this.router.navigate(['/home']);
+        }, 3000);
         },
         error: (err) => {
-          console.error('Error creating survey:', err);
-          alert('Error creating survey. Please try again.');
+         this.addFaild=true;
         }
       });
     } else {
@@ -139,3 +154,28 @@ addAnswerOption(questionIndex: number): void {
   
 
 }
+export function answerOptionsRequiredValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const questionType = control.get('questionType')?.value;
+    const answerOptions = control.get('answerOptions') as FormArray;
+
+    if (questionType === 'text') {
+      return null;
+    }
+
+    if (!answerOptions || answerOptions.length === 0) {
+      return { answerOptionsRequired: true };
+    }
+
+    const hasNonEmpty = answerOptions.controls.some(
+      option => option.get('text')?.value?.trim()
+    );
+
+    if (!hasNonEmpty) {
+      return { answerOptionsRequired: true };
+    }
+
+    return null;
+  };
+}
+

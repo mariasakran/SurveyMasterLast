@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SurveyService } from '../../services/survey.service';
-import { Title } from '@angular/platform-browser';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-accept-survey-details',
@@ -21,6 +21,7 @@ notification :any;
   constructor(
     private route: ActivatedRoute,
     private surveyService: SurveyService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +49,7 @@ acceptSurvey(id: number,message: string): void{
   this.surveyService.acceptSurvey(id).subscribe({
      next: async (data) => {
         this.acceptedSurvey = await data;
+        
       },
            error: (err) => {
        
@@ -59,10 +61,14 @@ acceptSurvey(id: number,message: string): void{
     content:message,
     title : "accepted survey "+this.survey.title +  " have category " + this.survey.category 
   };
+  if(createNotification.content==""){
+    createNotification.content="your survey have been accpeted";
+  }
   this.surveyService.sendNotification(createNotification).subscribe({
     next: async (data)=>{
       this.notification=await data;
-      alert('done');
+          this.toastr.success('survey Accepted!', 'Success');
+
         },
            error: (err) => {
        

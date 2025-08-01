@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-user-mangement',
@@ -14,7 +16,7 @@ export class UserMangementComponent {
 userDetails: any;
 wanttodelete=false;
 
-constructor(private authService: AuthService,private router: Router,private http: HttpClient) {}
+constructor(private authService: AuthService,private router: Router,private http: HttpClient,private toastr: ToastrService) {}
 ngOnInit(): void {
   this.authService.getAllUsers().subscribe({
     next: async (data) => {
@@ -47,7 +49,7 @@ canceldelete(){
 
 deleteUser(userId: number) {
   if(this.authService.deleteUser(userId)){
-    this.deletesucsecc=true;
+    this.toastr.warning('DELETED');
     this.wanttodelete=false;
     setTimeout(() => {
         window.location.reload();

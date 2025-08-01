@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SurveyService } from '../../services/survey.service';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-my-survey',
   standalone: false,
@@ -13,7 +15,8 @@ surveys: any[] = [];
  user = JSON.parse(localStorage.getItem('user') || '{}'); 
   constructor(
     private surveyService: SurveyService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -35,7 +38,10 @@ surveys: any[] = [];
   finishSurvey(surveyId: number): void {
     this.surveyService.IsFinished(surveyId).subscribe({
       next: (data)=>{
-       console.log("hiii");
+        this.toastr.error('preparing results...');
+        setTimeout(() => {
+        window.location.reload();
+      }, 2000);
       
       },
       error: (err)=>{

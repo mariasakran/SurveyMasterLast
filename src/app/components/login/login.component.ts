@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,7 @@ username: string = '';
   password: string = '';
   registrationFaild = false;
   userDetails: any;
-  constructor(private http: HttpClient,private router: Router,private authService: AuthService) {}
+  constructor(private http: HttpClient,private router: Router,private authService: AuthService,private toastr: ToastrService) {}
 
   onSubmit() {
     const credentials = {
@@ -31,10 +33,13 @@ username: string = '';
             this.authService.getUserDetails().subscribe({
               next: (data) => {
                 this.userDetails = data;  
-                this.router.navigate(['/home']);
+                    this.toastr.success('login successfully!', 'Success');
+                  setTimeout(() => {
+                   this.router.navigate(['/home']);
+                   }, 3000);
               },
               error: (err) => {
-                console.error('Error fetching user details:', err);
+                    this.toastr.error('Something went wrong!', 'Error');
               }
               
             });
@@ -48,9 +53,9 @@ username: string = '';
         console.error('Full error response:', error);
         console.error('Status:', error.status);
         if (error.status === 401) {
-          this.registrationFaild=true;
+          this.toastr.error('Something went wrong!', 'Error');
         } else {
-          this.registrationFaild=true;
+          this.toastr.error('Something went wrong!', 'Error');
         }
       }
     });

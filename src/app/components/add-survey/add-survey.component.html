@@ -1,8 +1,7 @@
+<app-sidebar></app-sidebar>
 <body>
   <div class="container mt-4">
-    <button class="btn btn-outline-secondary mb-3" routerLink="/home">
-      <i class="bi bi-arrow-left"></i> Back to Home
-    </button>
+
     <h2>Create New Survey</h2>
     <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
       <!-- Survey Info -->
@@ -55,7 +54,9 @@
             <div class="form-group">
               <label>Question Text *</label>
               <input type="text" class="form-control" formControlName="text">
-              <!-- ... validation ... -->
+                <div *ngIf="question.get('text')?.invalid && question.get('text')?.touched" class="text-danger">
+                  Question text is required.
+                </div>
             </div>
 
             <div class="form-group">
@@ -66,6 +67,9 @@
                   {{type.display}}
                 </option>
               </select>
+                <div *ngIf="question.get('questionType')?.invalid && question.get('questionType')?.touched" class="text-danger">
+                  Question type is required.
+                </div>
             </div>
             <!-- Answer Options -->
             <div *ngIf="questions.at(i)?.get('questionType')?.value!=='text'">
@@ -82,6 +86,9 @@
                   class="option-group mb-2">
                   <div class="input-group">
                     <input type="text" class="form-control" formControlName="text">
+                    <div *ngIf="option.get('text')?.invalid && option.get('text')?.touched" class="text-danger">
+                      Option text is required.
+                    </div>
                     <div class="input-group-append">
                       <button class="btn btn-outline-danger" type="button" (click)="removeAnswerOption(i, j)"
                         *ngIf="getAnswerOptions(i).length > 1">
@@ -89,7 +96,7 @@
                       </button>
                     </div>
                   </div>
-                  <!-- ... validation ... -->
+               
                 </div>
               </div>
             </div>
@@ -100,6 +107,12 @@
             Add Question ({{questions.length}}/{{maxQuestions}})
           </button>
         </div>
+      </div>
+      <div *ngIf="addDone==true">
+        <p>create success Wating for service response</p>
+      </div>
+      <div *ngIf="addFaild==true">
+        <p>Something went wrong tru again later!</p>
       </div>
 
       <button type="submit" class="btn btn-success btn-lg" [disabled]="surveyForm.invalid">

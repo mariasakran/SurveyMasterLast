@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-edit-user',
@@ -23,7 +25,7 @@ export class EditUserComponent implements OnInit {
   editForm: FormGroup;
   editSuccess = false;
   editFaild = false;
-  constructor(private fb: FormBuilder, private AuthService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private AuthService: AuthService, private router: Router,private toastr: ToastrService) {
     this.editForm = this.fb.group({
       username: ['', [Validators.required,Validators.minLength(5)]],
       email: ['', [Validators.required, Validators.email]],
@@ -38,14 +40,15 @@ export class EditUserComponent implements OnInit {
     }
     this.AuthService.editUser(this.editUserDetails.id,this.editForm.value).subscribe({
       next: (response) => {
-        this.editSuccess = true;
+            this.toastr.info('user have been updated', 'Info');
+
         setTimeout(() => {
           this.router.navigate(['/usermange']);
         }, 3000);
       },
       error: (error) => {
-        console.error('Error adding user', error);
-        this.editFaild = true;
+            this.toastr.error('Something went wrong!', 'Error');
+
       }
     });
   }

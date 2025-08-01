@@ -23,9 +23,9 @@
                 <li *ngIf="userDetails.role=='Subscriber'||userDetails.role=='Admin' "><a routerLink="/addsurvey"><span class="material-symbols-outlined">add</span><span>Add Survey</span></a></li>
                 <li *ngIf="userDetails.role=='User'"><a routerLink="/payment"><span class="material-symbols-outlined">attach_money</span><span>Subscribe</span></a></li>
                 <li *ngIf="userDetails.role=='Subscriber'"><a routerLink="/addcategory"><span class="material-symbols-outlined">add</span><span>Add category</span></a></li>
-                <li *ngIf="userDetails.role=='Subscriber'"><a routerLink="/mySurvey"><span class="material-symbols-outlined">add</span><span>My surveys</span></a></li>
+                <li *ngIf="userDetails.role=='Subscriber'||userDetails.role=='Admin'"><a routerLink="/mySurvey"><span class="material-symbols-outlined">add</span><span>My surveys</span></a></li>
 
-                 <li *ngIf="userDetails.role=='Subscriber'"><a routerLink="/notification"><span class="material-symbols-outlined">notifications_active</span><span>my Notifications</span></a></li>
+                 <li *ngIf="userDetails.role=='Subscriber'||userDetails.role=='Admin'"><a routerLink="/notification"><span class="material-symbols-outlined">notifications_active</span><span>my Notifications</span></a></li>
                 <li *ngIf="userDetails.role!='Admin'"><a routerLink="/favorite"><span class="material-symbols-outlined">star</span><span>favorite</span></a></li>
 
                 <li><a routerLink="/Main"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
