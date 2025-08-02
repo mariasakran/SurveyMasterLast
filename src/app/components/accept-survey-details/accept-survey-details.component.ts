@@ -89,6 +89,9 @@ declineSurvey(id: number,message: string): void{
     title : "declined survey "+this.survey.title +  " have category " + this.survey.category 
 
   };
+   if(createNotification.content==""){
+    createNotification.content="your survey have been declined";
+  }
   this.surveyService.sendNotification(createNotification).subscribe({
     next: async (data)=>{
       this.notification=await data;
