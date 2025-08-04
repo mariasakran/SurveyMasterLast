@@ -28,7 +28,7 @@
                             <td>{{ category.id }}</td>
                             <td>{{ category.type }}</td>
                             <td>
-                                <p *ngIf="category.accepted==false">unAccepted</p>
+                                <p *ngIf="category.accepted==false">pending</p>
                                 <p *ngIf="category.accepted==true">Accepted</p>
                             </td>
                             <td class="actions">

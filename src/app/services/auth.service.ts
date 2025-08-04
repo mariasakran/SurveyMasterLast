@@ -15,20 +15,20 @@ export class AuthService {
      if (user && user.username) {
       const username = user.username;
 
-      return this.http.get(`http://localhost:8088/users/${username}`);
+      return this.http.get(`${this.apiUrl}/${username}`);
     } else {
       throw new Error('No user logged in');
     }
   }
   getAllUsers(){
-    return this.http.get(`http://localhost:8088/users`);
+    return this.http.get(`${this.apiUrl}`);
   }
   editUser(userId: number, userData: any): Observable<any> {
     const url = `${this.apiUrl}/${userId}`;
     return this.http.put(url, userData);
   }
   deleteUser(num: number){
-    return this.http.delete(`http://localhost:8088/users/${num}`).subscribe({
+    return this.http.delete(`${this.apiUrl}/${num}`).subscribe({
     });
   }
   
@@ -40,4 +40,20 @@ export class AuthService {
         return this.http.put(`${this.apiUrl}/${userId}/editPassword`, {Password});
 
   }
+      sendNotification(notification : any): Observable<any>{
+      return this.http.post(`${this.apiUrl}/sendNotification`,notification);
+    }
+
+    getNotification(userId : number):Observable<any> {
+      return this.http.get<any[]>(`${this.apiUrl}/getNotification/${userId}`);
+    }
+
+    deleteNotifications(userId:number):Observable<any> {
+      return this.http.delete<any>(`${this.apiUrl}/deleteNotificationByUserId/${userId}`);
+    }
+    deleteNotification(notificationId:number) {
+      return this.http.delete(`${this.apiUrl}/deleteNotificationById/${notificationId}`).subscribe({
+
+       });
+    }
 }

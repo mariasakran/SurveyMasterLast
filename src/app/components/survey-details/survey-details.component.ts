@@ -146,6 +146,7 @@ submitSurvey(): void {
     
     return response;
   });
+  
       this.surveyService.addVoter(this.id,this.user.id).subscribe({
       next:(data)=>{
         console.log("done voter");

@@ -38,7 +38,7 @@ surveys: any[] = [];
   finishSurvey(surveyId: number): void {
     this.surveyService.IsFinished(surveyId).subscribe({
       next: (data)=>{
-        this.toastr.error('preparing results...');
+        this.toastr.info('preparing results...');
         setTimeout(() => {
         window.location.reload();
       }, 2000);
