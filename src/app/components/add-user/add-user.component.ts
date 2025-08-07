@@ -2,28 +2,33 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterService } from '../../services/register.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-user',
   standalone: false,
   templateUrl: './add-user.component.html',
-  styleUrl: './add-user.component.css'
+  styleUrl: './add-user.component.css',
 })
 export class AddUSERComponent {
-registerForm: FormGroup;
+  registerForm: FormGroup;
   addSuccess = false;
   addFaild = false;
-  constructor(private fb: FormBuilder, private registerService: RegisterService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private registerService: RegisterService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {
     this.registerForm = this.fb.group({
-      username: ['', [Validators.required,Validators.minLength(5)]],
+      username: ['', [Validators.required, Validators.minLength(5)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      role: ['', Validators.required]
+      role: ['', Validators.required],
     });
   }
   onSubmit() {
     if (this.registerForm.invalid) {
-      alert('Please enter valid details!');
+      this.toastr.warning('something went wrong');
       return;
     }
     this.registerService.addUser(this.registerForm.value).subscribe({
@@ -36,7 +41,7 @@ registerForm: FormGroup;
       error: (error) => {
         console.error('Error adding user', error);
         this.addFaild = true;
-      }
+      },
     });
   }
   get email() {
@@ -51,5 +56,4 @@ registerForm: FormGroup;
   get role() {
     return this.registerForm.get('role');
   }
-  
 }

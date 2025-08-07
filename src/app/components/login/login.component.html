@@ -23,7 +23,8 @@
                     <input type="password" id="password" [(ngModel)]="password" name="password" required>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Login</button>
-                <p *ngIf="registrationFaild" class="faild-message">Login Failed!</p>
+                <p *ngIf="LoginFaild" class="faild-message">username or password incorrect!</p>
+                <p *ngIf="loginDone" class="Done-message">Login Successfully...Welcome</p>
             </form>
             <p class="text-center mt-3">
                 <a routerLink="/register">Create an account</a>

@@ -39,9 +39,10 @@
           <small *ngIf="role?.errors?.['required']">Role is required.</small>
         </div>
         <button type="submit" [disabled]="registerForm.invalid">Add User</button>
+         <p *ngIf="addSuccess" class="success-message">Successful! adding user</p>
+          <p *ngIf="addFaild" class="faild-message">adding user failed , username or email already used!!</p>
         <button type="submit" routerLink="/usermange">Back to List</button>
-        <p *ngIf="addSuccess" class="success-message">Successful! adding user</p>
-        <p *ngIf="addFaild" class="faild-message">adding user failed!</p>
+
       </form>
     </div>
   </div>

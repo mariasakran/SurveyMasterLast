@@ -4,9 +4,6 @@
     <div class="content-right">
         <div class="user-management-container">
             <h2>Category Management</h2>
-            <p *ngIf="deletesucsecc==true" class="success-message">Delete Success</p>
-            <p *ngIf="failddelete==true" class="error-message">Delete failed</p>
-
             <div class="add-btn-container">
                 <button class="btn btn-edit" (click)="openAddCategory()">
                     <span class="material-symbols-outlined">add</span> Add Category
@@ -28,23 +25,22 @@
                             <td>{{ category.id }}</td>
                             <td>{{ category.type }}</td>
                             <td>
-                                <p *ngIf="category.accepted==false">pending</p>
-                                <p *ngIf="category.accepted==true">Accepted</p>
+                                <p *ngIf="!category.accepted">Pending</p>
+                                <p *ngIf="category.accepted">Accepted</p>
                             </td>
                             <td class="actions">
-                                <button class="btn btn-delete" (click)="confirmdelete()">
+                                <button class="btn btn-delete" (click)="confirmdelete(category.id)">
                                     <span class="material-symbols-outlined">delete</span> Delete
                                 </button>
 
-                                <div *ngIf="wanttodelete" class="confirmation-dialog">
+                                <div *ngIf="selectedCategoryId === category.id" class="confirmation-dialog">
                                     <div class="dialog-content">
                                         <h3>Confirm Deletion</h3>
                                         <p>Are you sure you want to delete this category? This action cannot be undone.
                                         </p>
                                         <div class="dialog-actions">
                                             <button class="btn btn-cancel" (click)="canceldelete()">Cancel</button>
-                                            <button class="btn btn-confirm"
-                                                (click)="deleteCategory(category.id)">Confirm</button>
+                                            <button class="btn btn-confirm" (click)="deleteCategory()">Confirm</button>
                                         </div>
                                     </div>
                                 </div>

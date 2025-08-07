@@ -17,6 +17,27 @@ body {
     padding: 20px;
     min-height: 100vh;
 }
+select.form-control {
+  background-color: #0a192f; /* dark navy */
+  color: #64ffda;
+  border: 1px solid #64ffda;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select.form-control:focus {
+  outline: none;
+  border-color: #64ffda;
+  box-shadow: 0 0 5px #64ffda88;
+}
+
+select.form-control option {
+  background-color: #0a192f;
+  color: #64ffda;
+}
+
 
 .container {
     max-width: 1200px;

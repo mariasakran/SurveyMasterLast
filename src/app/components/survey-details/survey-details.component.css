@@ -1,24 +1,24 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #0a192f; 
-    color: white;
-    margin: 0;
-    padding: 20px;
-    min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+  background-color: #0a192f;
+  color: white;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
 }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #172a45; /* Medium navy blue */
+  background-color: #172a45;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border: 1px solid #303f60; /* Light gray-blue */
+  border: 1px solid #303f60;
 }
 
-/* Back Button */
 .btn-outline-secondary {
-  color: #64ffda; /* Teal */
+  color: #64ffda;
   border-color: #64ffda;
   background-color: transparent;
   padding: 0.5rem 1rem;
@@ -37,31 +37,6 @@ body {
   font-size: 1rem;
 }
 
-/* Loading Spinner */
-.text-center {
-  text-align: center;
-  padding: 2rem;
-}
-
-.spinner-border {
-  width: 3rem;
-  height: 3rem;
-  border-width: 0.25em;
-  color: #64ffda;
-  margin-bottom: 1rem;
-}
-
-/* Error Message */
-.alert-danger {
-  background-color: rgba(255, 107, 107, 0.1);
-  color: #ff6b6b;
-  border-left: 3px solid #ff6b6b;
-  padding: 1rem;
-  border-radius: 4px;
-  margin-bottom: 1.5rem;
-}
-
-/* Survey Card */
 .card {
   border: 1px solid #303f60;
   border-radius: 8px;
@@ -76,11 +51,11 @@ body {
 }
 
 .bg-primary {
-  background-color: #112240 !important; /* Darker navy blue */
+  background-color: #112240 !important;
 }
 
 .bg-light {
-  background-color: #1a365d !important; /* Slightly lighter navy */
+  background-color: #1a365d !important;
 }
 
 .text-white {
@@ -91,14 +66,12 @@ body {
   padding: 1.5rem;
 }
 
-/* Survey Title */
 h3 {
   color: #64ffda;
   margin: 0;
   font-size: 1.5rem;
 }
 
-/* Survey Description */
 .lead {
   color: #cbd5e1;
   font-size: 1.1rem;
@@ -106,14 +79,12 @@ h3 {
   margin-bottom: 0;
 }
 
-/* Questions Section */
 h4 {
   color: #64ffda;
   margin: 0;
   font-size: 1.25rem;
 }
 
-/* Question Items */
 .mb-4 {
   margin-bottom: 1.5rem !important;
 }
@@ -136,7 +107,6 @@ h5 {
   margin-bottom: 1rem;
 }
 
-/* Answer Options */
 .form-check {
   margin-top: 1rem;
 }
@@ -160,32 +130,24 @@ h5 {
   cursor: pointer;
 }
 
-/* Text Response */
-.alert-info {
-  background-color: rgba(100, 255, 218, 0.1);
-  color: #64ffda;
-  border-left: 3px solid #64ffda;
-  border-radius: 4px;
-  padding: 1rem;
-}
-
 .form-control {
   background-color: #0a192f;
-  border: 1px solid #303f60;
+  border: 1px solid #64ffda;
   color: #ffffff;
-  padding: 0.75rem;
-  border-radius: 4px;
+  padding: 1rem;
+  border-radius: 6px;
   width: 100%;
-  margin-top: 0.5rem;
+  min-height: 150px;
+  font-size: 1rem;
+  resize: vertical;
 }
 
 .form-control:focus {
   border-color: #64ffda;
-  box-shadow: 0 0 0 0.2rem rgba(100, 255, 218, 0.25);
-  outline: 0;
+  box-shadow: 0 0 0 0.15rem rgba(100, 255, 218, 0.3);
+  outline: none;
 }
 
-/* List Group */
 .list-group {
   border-radius: 4px;
   overflow: hidden;
@@ -209,21 +171,20 @@ h5 {
   border-bottom-right-radius: 4px;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .container {
     padding: 1rem;
     margin: 1rem;
   }
-  
+
   .card-body {
     padding: 1rem;
   }
-  
+
   h3 {
     font-size: 1.3rem;
   }
-  
+
   h5 {
     font-size: 1rem;
   }

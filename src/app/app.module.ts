@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AboutUsComponent } from './components/about-us/about-us.component';
+import { AboutUsComponent } from './components/subscription-info/about-us.component';
 import { AcceptSurveyComponent } from './components/accept-survey/accept-survey.component';
 import { AcceptSurveyDetailsComponent } from './components/accept-survey-details/accept-survey-details.component';
 import { AddCategoryComponent } from './components/add-category/add-category.component';
@@ -23,17 +23,16 @@ import { SurveyDetailsComponent } from './components/survey-details/survey-detai
 import { UserMangementComponent } from './components/user-mangement/user-mangement.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 import { AcceptCategoryComponent } from './components/accept-category/accept-category.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { MySurveyComponent } from './components/my-survey/my-survey.component';
 import { SurveyResultComponent } from './components/survey-result/survey-result.component';
-
-
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +59,8 @@ import { SurveyResultComponent } from './components/survey-result/survey-result.
     AcceptCategoryComponent,
     NotificationComponent,
     MySurveyComponent,
-    SurveyResultComponent
+    SurveyResultComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,12 +74,10 @@ import { SurveyResultComponent } from './components/survey-result/survey-result.
     ToastrModule.forRoot({
       timeOut: 2000,
       positionClass: 'toast-top-right',
-      preventDuplicates:true,
-}),
+      preventDuplicates: true,
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-
- }
+export class AppModule {}

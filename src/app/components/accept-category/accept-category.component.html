@@ -1,4 +1,5 @@
 <app-sidebar></app-sidebar>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +12,7 @@
         <header class="header">
             <h1> Accept Category</h1>
             <div class="actions">
-                <div class="search-box">
-                    <input type="text" placeholder="Search categories...">
-                    <button class="search-btn"><i class="fas fa-search"></i></button>
-                </div>
+
             </div>
         </header>
 
@@ -22,7 +20,7 @@
             <div class="category-card" *ngFor="let Category of categories">
                 <div class="category-info">
                     <h3>{{Category.type}}</h3>
-                    <p class="category-description">Devices, gadgets, and electronic components</p>
+                    <p class="category-description">{{Category.description}}</p>
                 </div>
                 <div class="category-actions">
                     <button class="btn btn-edit" (click)="acceptCategory(Category.id)"><i

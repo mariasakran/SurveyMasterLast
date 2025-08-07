@@ -3,11 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CategoryService {
-
-
   private apiUrl = 'http://localhost:8088/categories';
 
   constructor(private http: HttpClient) {}
@@ -15,22 +13,20 @@ export class CategoryService {
   addCategory(category: any): Observable<any> {
     return this.http.post(this.apiUrl, category);
   }
-getcategories(){
-  return this.http.get(this.apiUrl);
-}
-DeleteCategory(num: number){
-  return this.http.delete(`${this.apiUrl}/${num}`).subscribe({
-  });
+  getcategories(): Observable<any> {
+    return this.http.get(this.apiUrl);
+  }
+  DeleteCategory(num: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${num}`);
+  }
+  UnAcceptedCategory(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/getUnAcceptedCategory`);
+  }
 
-}
-UnAcceptedCategory(){
-  return this.http.get(`${this.apiUrl}/getUnAcceptedCategory`);
-}
-
-AcceptedCategory(){
-  return this.http.get(`${this.apiUrl}/getAcceptedCategory`);
-}
-isAccepted(categoryId: number){
-  return this.http.put(`${this.apiUrl}/IsAccepted/${categoryId}`,{});
-}
+  AcceptedCategory(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/getAcceptedCategory`);
+  }
+  isAccepted(categoryId: number) {
+    return this.http.put(`${this.apiUrl}/IsAccepted/${categoryId}`, {});
+  }
 }

@@ -1,0 +1,31 @@
+<app-sidebar></app-sidebar>
+<div class="dashboard-container">
+    <h2 class="dashboard-title">📊 Dashboard Overview</h2>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>👤 Total Users</h3>
+            <p>{{ usersCount }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>✅ Active Surveys</h3>
+            <p>{{ activeSurveysCount }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>🕒 pending Surveys</h3>
+            <p>{{ unAcceptedSurveysCount }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>📁 Finished Surveys</h3>
+            <p>{{ finishedSurveysCount }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>📂Active Categories</h3>
+            <p>{{ categoriesCount }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>🕒 pending Categories</h3>
+            <p>{{ pendingCategoriesCount }}</p>
+        </div>
+    </div>
+</div>

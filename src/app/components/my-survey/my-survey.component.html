@@ -30,13 +30,15 @@
               </p>
             </div>
             <div class="card-footer bg-transparent">
-              <button class="btn btn-outline-primary" *ngIf="survey.finished==false" (click)="finishSurvey(survey.id)">
+              <button class="btn btn-outline-primary" *ngIf="survey.finished==false&&survey.accepted==true"
+                (click)="finishSurvey(survey.id)">
                 Finish
               </button>
-              <button class="btn btn-outline-primary" *ngIf="survey.finished==true"
+              <button class="btn btn-outline-primary" *ngIf="survey.accepted==true"
                 (click)="viewSurveyResult(survey.id)">
                 View Result
               </button>
+              <a class="btn btn-outline-primary" *ngIf="survey.accepted==false">Waiting for Accepting</a>
             </div>
           </div>
         </div>

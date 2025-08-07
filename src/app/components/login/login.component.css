@@ -107,7 +107,13 @@ a:hover {
 }
 
 .faild-message {
-    color: #ff6b6b;
+    color: #f11818;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+.Done-message {
+    color: #26e62c;
     text-align: center;
     margin-top: 15px;
     font-size: 14px;

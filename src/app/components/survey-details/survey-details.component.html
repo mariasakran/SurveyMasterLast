@@ -7,7 +7,7 @@
     <div *ngIf="survey">
       <div class="card mb-4">
         <div class="card-header bg-primary text-white">
-          <h3>{{ survey.name }}</h3>
+          <h3>{{ survey.title }}</h3>
         </div>
         <div class="card-body">
           <p class="lead">{{ survey.description || 'No description provided' }}</p>
@@ -24,7 +24,6 @@
             <h5>{{ currentQuestion.text }}</h5>
 
             <div *ngIf="currentQuestion.answerOptions?.length > 0">
-
               <div *ngIf="currentQuestion.questionType === 'checkbox'" class="form-check">
                 <div *ngFor="let option of currentQuestion.answerOptions" class="mb-2">
                   <input class="form-check-input" type="checkbox" [id]="'option-'+currentQuestionIndex+'-'+option.id"
@@ -54,8 +53,8 @@
               </ul>
             </div>
 
-            <div *ngIf="currentQuestion.questionType === 'text'" class="alert alert-info">
-              <textarea class="form-control mt-2" placeholder="Enter your answer here..."
+            <div *ngIf="currentQuestion.questionType === 'text'" class="mb-3">
+              <textarea class="form-control" rows="5" placeholder="Enter your answer here..."
                 [(ngModel)]="currentQuestion.textAnswer"></textarea>
             </div>
           </div>

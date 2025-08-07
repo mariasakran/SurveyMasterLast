@@ -103,7 +103,7 @@ button[type="submit"][disabled] {
 }
 
 .success-message {
-    color: #64ffda;
+    color: #0df505;
     text-align: center;
     margin-top: 15px;
     font-weight: 500;

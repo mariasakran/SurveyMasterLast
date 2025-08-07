@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutUsComponent } from './components/about-us/about-us.component';
+import { AboutUsComponent } from './components/subscription-info/about-us.component';
 import { AcceptSurveyComponent } from './components/accept-survey/accept-survey.component';
 import { AcceptSurveyDetailsComponent } from './components/accept-survey-details/accept-survey-details.component';
 import { AddCategoryComponent } from './components/add-category/add-category.component';
@@ -22,34 +22,36 @@ import { AcceptCategoryComponent } from './components/accept-category/accept-cat
 import { NotificationComponent } from './components/notification/notification.component';
 import { MySurveyComponent } from './components/my-survey/my-survey.component';
 import { SurveyResultComponent } from './components/survey-result/survey-result.component';
- const routes: Routes = [
-    {path:'',redirectTo:'Main',pathMatch:'full'},
-    {path:'register',component:RegisterComponent},
-    {path:'Main',component:MainComponent},
-    {path:'adduser',component:AddUSERComponent},
-    {path:'acceptsurvey',component:AcceptSurveyComponent},
-    {path:'addsurvey',component:AddSurveyComponent},
-    {path:'usermange',component:UserMangementComponent},
-    {path:'payment',component:PaymentComponent},
-    {path:'home',component:HomeComponent},
-    {path:'login',component:LoginComponent},
-    {path:'profile',component:ProfileComponent},
-    {path:'survey',component:SurveyComponent},
-    {path:'edit',component:EditUserComponent},
-    {path:'addcategory',component:AddCategoryComponent},
-    {path:'categorymange',component:CategoryMangmentComponent},
-    {path:'favorite',component:FavoriteComponent},
-    {path:'survey/:id',component:SurveyDetailsComponent},
-    {path:'AboutUs',component:AboutUsComponent},
-    {path:'surveydetails/:id',component:AcceptSurveyDetailsComponent},
-    {path:'acceptCategory',component:AcceptCategoryComponent},
-    {path:'notification',component:NotificationComponent},
-    {path:'mySurvey',component:MySurveyComponent},
-    {path:'surveyResult/:id',component:SurveyResultComponent}
+import { DashboardComponent } from './dashboard/dashboard.component';
+const routes: Routes = [
+  { path: '', redirectTo: 'Main', pathMatch: 'full' },
+  { path: 'register', component: RegisterComponent },
+  { path: 'Main', component: MainComponent },
+  { path: 'adduser', component: AddUSERComponent },
+  { path: 'acceptsurvey', component: AcceptSurveyComponent },
+  { path: 'addsurvey', component: AddSurveyComponent },
+  { path: 'usermange', component: UserMangementComponent },
+  { path: 'payment', component: PaymentComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'survey', component: SurveyComponent },
+  { path: 'edit', component: EditUserComponent },
+  { path: 'addcategory', component: AddCategoryComponent },
+  { path: 'categorymange', component: CategoryMangmentComponent },
+  { path: 'favorite', component: FavoriteComponent },
+  { path: 'survey/:id', component: SurveyDetailsComponent },
+  { path: 'AboutUs', component: AboutUsComponent },
+  { path: 'surveydetails/:id', component: AcceptSurveyDetailsComponent },
+  { path: 'acceptCategory', component: AcceptCategoryComponent },
+  { path: 'notification', component: NotificationComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'mySurvey', component: MySurveyComponent },
+  { path: 'surveyResult/:id', component: SurveyResultComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
