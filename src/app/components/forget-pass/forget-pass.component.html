@@ -1,0 +1,20 @@
+<div class="container mt-5">
+    <div class="card shadow p-4" style="background-color: #0a192f; color: #64ffda;">
+        <h2 class="mb-4 text-center">🔐 Forgot Password</h2>
+
+        <form [formGroup]="forgotPasswordForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="username">Enter your username</label>
+                <input type="text" id="username" formControlName="username" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && username?.invalid }" />
+                <div *ngIf="submitted && username?.invalid" class="invalid-feedback text-danger">
+                    Username is required and must be at least 3 characters.
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-outline-info mt-3" [disabled]="isLoading">
+                {{ isLoading ? 'Sending...' : 'Send Reset Link' }}
+            </button>
+        </form>
+    </div>
+</div>

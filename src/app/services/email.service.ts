@@ -19,4 +19,7 @@ export class EmailService {
   sendNewSurvey(surveyId: number): Observable<any> {
     return this.http.post(`${this.apiUrl}/notify-new-survey/${surveyId}`, {});
   }
+  sendRestCode(username: string, code: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/send-reset/${username}/${code}`, {});
+  }
 }

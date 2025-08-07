@@ -23,6 +23,9 @@ import { NotificationComponent } from './components/notification/notification.co
 import { MySurveyComponent } from './components/my-survey/my-survey.component';
 import { SurveyResultComponent } from './components/survey-result/survey-result.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ForgetPassComponent } from './components/forget-pass/forget-pass.component';
+import { CodeConfirmComponent } from './components/code-confirm/code-confirm.component';
+import { RestPassComponent } from './components/rest-pass/rest-pass.component';
 const routes: Routes = [
   { path: '', redirectTo: 'Main', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
@@ -48,6 +51,9 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'mySurvey', component: MySurveyComponent },
   { path: 'surveyResult/:id', component: SurveyResultComponent },
+  { path: 'frogetPass', component: ForgetPassComponent },
+  { path: 'confirmCode', component: CodeConfirmComponent },
+  { path: 'restPass', component: RestPassComponent },
 ];
 
 @NgModule({

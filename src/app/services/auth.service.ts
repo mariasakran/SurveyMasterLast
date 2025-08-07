@@ -55,4 +55,21 @@ export class AuthService {
       .delete(`${this.apiUrl}/deleteNotificationById/${notificationId}`)
       .subscribe({});
   }
+  requestPasswordReset(username: string): Observable<string> {
+    return this.http.get(`${this.apiUrl}/requestUpdate/${username}`, {
+      responseType: 'text',
+    });
+  }
+  CheckForgetPasswordCode(username: string, Code: string): Observable<any> {
+    return this.http.put(
+      `${this.apiUrl}/requestUpdate/${username}/${Code}`,
+      {}
+    );
+  }
+  restPassword(username: string, password: string): Observable<any> {
+    return this.http.put(
+      `${this.apiUrl}/restPassword/${username}/${password}`,
+      {}
+    );
+  }
 }

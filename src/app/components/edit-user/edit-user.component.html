@@ -18,12 +18,7 @@
           <small *ngIf="email?.errors?.['email']">Invalid email format.</small>
         </div>
 
-        <label>Password:</label>
-        <input type="password" formControlName="password" />
-        <div *ngIf="password?.invalid && password?.touched">
-          <small *ngIf="password?.errors?.['required']">Password is required.</small>
-          <small *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters.</small>
-        </div>
+
 
 
         <label>Role:</label>
